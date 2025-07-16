@@ -8,7 +8,7 @@ st.title("Multilingual Text-to-Speech Translator")
 st.subheader("Translate and listen to text in multiple languages")
 st.markdown("Type your sentence below and hear it translated.")
 
-user_input = st.text_input("Enter text to translate:")
+user_text = st.text_input("Enter your text:")
 
 language_map = {
     "French": "fr",
@@ -17,7 +17,7 @@ language_map = {
     "English": "en"
 }
 
-selected_language = st.selectbox("Translate to:", list(language_map.keys()))
+target_language = st.selectbox("Translate to:", list(language_map.keys()))
 
 def translate_and_speak(text, target_lang):
     translator = Translator()
@@ -43,8 +43,8 @@ def translate_and_speak(text, target_lang):
       
 
 if st.button("🔊 Translate & Speak"):
-    user_input = user_input.strip()
-    if user_input == "":
+    user_text = user_input.strip()
+    if user_text == "":
         st.warning("Please enter some text to translate.")
     else:
-        translate_and_speak(user_input, selected_language)
+        translate_and_speak(user_text, target_language)
